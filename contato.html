@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Melka Noz Macadâmia: Agroindústria familiar dedicada ao cultivo e comercialização de macadâmias de alta qualidade e sustentáveis.">
+    <title>Melka - Contato</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
+    <link rel="icon" type="image/svg+xml" href="img/logo-melka.svg">
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+</head>
+<body>
+    <header-component></header-component>
+    <section id="contato" class="container-contato">
+        <div class="info-contato">
+            <h1>Contato</h1>
+            <h2>Email</h2>
+            <a href="mailto:contato@melka.com.br">contato@melka.com.br</a>
+              
+            <h2>Whatsapp</h2>
+            
+            <button class="btn-whatsapp" onclick="window.open('https://wa.me/5514981531006', '_blank')">
+                <img src="img/whatsapp-svg.svg" style="height: 20px;" alt="Ícone do WhatsApp">
+                Fale conosco!
+            </button>
+          
+
+        </div>
+        <form action="https://formspree.io/f/mbdzlvbw" method="POST" class="forms-contato">
+             <input type="hidden" name="_subject" value="Nova mensagem do site">
+            <input type="text" name="_gotcha" style="display:none">
+            <div class="input-group">
+                <div>
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" placeholder="Nome completo" required>
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
+                </div>
+            </div>
+            <label for="mensagem">Mensagem</label>
+            <textarea name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar</button>
+            
+        </form>
+        
+    </section>
+
+    <footer-component></footer-component>
+</body>
+</html>

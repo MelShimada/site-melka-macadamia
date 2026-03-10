@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "sharp": "^0.34.5"
+  },
+  "name": "sitemelka",
+  "version": "1.0.0",
+  "description": "",
+  "main": "footer.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

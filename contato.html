@@ -15,23 +15,29 @@
 <body>
     <header-component></header-component>
     <section id="contato" class="container-contato">
-        <h1>Contato</h1>
-        <form class="forms-contato" onsubmit="enviarWhats(event)">
-            <div class="input-group">
-                <div>
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" placeholder="Nome completo" required>
+        <div class="contato-card">
+            <h1>Contato</h1>
+            <p class="contato-sub">Consulte nossos produtos e disponibilidade!</p>
+            <form class="forms-contato" onsubmit="enviarWhats(event)">
+                <div class="input-group">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" placeholder="Seu nome" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" placeholder="Seu melhor email">
+                    </div>
                 </div>
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email (opcional)">
-                </div>
-            </div>
-            <label for="mensagem">Mensagem</label>
-            <textarea name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>
-            <button type="submit" id="btn-enviar">Enviar via WhatsApp</button>
-        </form>
-        
+                <label for="mensagem">Mensagem</label>
+                <textarea name="mensagem" id="mensagem" placeholder="Qual produto você procura?" required></textarea>
+                <button type="submit" id="btn-enviar" aria-label="Enviar mensagem no WhatsApp">
+                    <img src="img/whatsapp-svg.svg" alt="" style="height: 20px;">
+                    Falar no WhatsApp
+                </button>
+                 
+            </form>
+        </div>
     </section>
 
     <footer-component></footer-component>
@@ -51,7 +57,7 @@
 
             setTimeout(() => {
                 btn.disabled = false;
-                btn.textContent = 'Enviar via WhatsApp';
+                btn.innerHTML = '<img src="img/whatsapp-svg.svg" alt="" style="height: 20px;"> Falar no WhatsApp';
             }, 5000);
         }
     </script>

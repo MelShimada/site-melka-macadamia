@@ -51,55 +51,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // cards já declarado acima no filtro
 
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const produtoId = card.dataset.produto;
-            const dados = listaProdutos[produtoId];
+    const abrirModal = (dados) => {
+        modal.querySelector('.modal-titulo').innerText = dados.titulo;
+        modal.querySelector('.modal-descricao').innerText = dados.descricao;
+        modal.querySelector('.modal-header-img').src = dados.imagem;
 
-           if (dados) {
-                modal.querySelector('.modal-titulo').innerText = dados.titulo;
-                modal.querySelector('.modal-descricao').innerText = dados.descricao;
-                modal.querySelector('.modal-header-img').src = dados.imagem;
+        const containerTarget = document.getElementById('container-dinamico-embalagens');
+        containerTarget.innerHTML = '';
 
-                // Gerenciar Embalagens
-                const containerTarget = document.getElementById('container-dinamico-embalagens');
-                containerTarget.innerHTML = ''; // Limpa o que tinha antes
+        if (dados.embalagens && dados.embalagens.length > 0) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'embalagens-container';
 
-                if (dados.embalagens && dados.embalagens.length > 0) {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'embalagens-container';
-                    
-                    const label = document.createElement('label');
-                    label.innerText = "Tamanhos disponíveis:";
-                    wrapper.appendChild(label);
+            const label = document.createElement('label');
+            label.innerText = "Tamanhos disponíveis:";
+            wrapper.appendChild(label);
 
-                    dados.embalagens.forEach(tamanho => {
-                        const span = document.createElement('span');
-                        span.className = 'embalagem-tag';
-                        span.innerText = tamanho;
-                        wrapper.appendChild(span);
-                    });
+            dados.embalagens.forEach(tamanho => {
+                const span = document.createElement('span');
+                span.className = 'embalagem-tag';
+                span.innerText = tamanho;
+                wrapper.appendChild(span);
+            });
 
-                    containerTarget.appendChild(wrapper);
-                }
+            containerTarget.appendChild(wrapper);
+        }
 
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        });
-    });
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modalClose.focus();
+    };
 
     const fecharModal = () => {
         modal.classList.remove('active');
+        modal.removeAttribute('role');
+        modal.removeAttribute('aria-modal');
         document.body.style.overflow = 'auto';
     };
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const dados = listaProdutos[card.dataset.produto];
+            if (dados) abrirModal(dados);
+        });
+    });
 
     if (modalClose) {
         modalClose.addEventListener('click', fecharModal);
     }
 
     window.addEventListener('click', (e) => {
-        if (e.target === modal) {
+        if (e.target === modal) fecharModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
             fecharModal();
         }
     });

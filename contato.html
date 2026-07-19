@@ -15,23 +15,8 @@
 <body>
     <header-component></header-component>
     <section id="contato" class="container-contato">
-        <div class="info-contato">
-            <h1>Contato</h1>
-            <h2>Email</h2>
-            <a href="mailto:contato@melka.com.br">contato@melka.com.br</a>
-              
-            <h2>Whatsapp</h2>
-            
-            <button class="btn-whatsapp" onclick="window.open('https://wa.me/5514981531006', '_blank')">
-                <img src="img/whatsapp-svg.svg" style="height: 20px;" alt="Ícone do WhatsApp">
-                Fale conosco!
-            </button>
-          
-
-        </div>
-        <form action="https://formspree.io/f/mbdzlvbw" method="POST" class="forms-contato">
-             <input type="hidden" name="_subject" value="Nova mensagem do site">
-            <input type="text" name="_gotcha" style="display:none">
+        <h1>Contato</h1>
+        <form class="forms-contato" onsubmit="enviarWhats(event)">
             <div class="input-group">
                 <div>
                     <label for="nome">Nome</label>
@@ -39,17 +24,36 @@
                 </div>
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Email" required>
+                    <input type="email" name="email" id="email" placeholder="Email (opcional)">
                 </div>
             </div>
             <label for="mensagem">Mensagem</label>
             <textarea name="mensagem" id="mensagem" placeholder="Mensagem" required></textarea>
-            <button type="submit">Enviar</button>
-            
+            <button type="submit" id="btn-enviar">Enviar via WhatsApp</button>
         </form>
         
     </section>
 
     <footer-component></footer-component>
+
+    <script>
+        function enviarWhats(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('btn-enviar');
+            const dados = new FormData(form);
+            const msg = `*Nova mensagem do site*%0A%0ANome: ${dados.get('nome')}%0AEmail: ${dados.get('email')}%0AMensagem: ${dados.get('mensagem')}`;
+
+            btn.disabled = true;
+            btn.textContent = 'Abrindo WhatsApp...';
+
+            window.open(`https://wa.me/5514981531006?text=${msg}`, '_blank');
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.textContent = 'Enviar via WhatsApp';
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

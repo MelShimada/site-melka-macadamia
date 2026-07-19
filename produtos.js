@@ -1,7 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Filtro de categorias
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const cards = document.querySelectorAll('.produto-card');
+
+    filtros.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filtros.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const categoria = btn.dataset.filtro;
+            cards.forEach(card => {
+                if (categoria === 'todas' || card.dataset.categoria.includes(categoria)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
     const modal = document.getElementById('modal-produto');
     const modalClose = document.getElementById('modal-close');
-    
+
     const listaProdutos = {
         "produto1": {
             titulo: "Macadâmia Estilo 1",
@@ -29,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const cards = document.querySelectorAll('.produto-card');
+    // cards já declarado acima no filtro
 
     cards.forEach(card => {
         card.addEventListener('click', () => {

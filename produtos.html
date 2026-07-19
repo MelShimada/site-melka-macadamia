@@ -18,43 +18,82 @@
 </head>
 <body>
     <header-component></header-component>
-  
-    <img src="img/vista.jpeg" alt="Nozes de Macadâmia" class="banner-produto"/>
+
+    <div class="hero-produtos">
+        <img src="img/vista.jpeg" alt="Nozes de Macadâmia" class="banner-produto"/>
+        <div class="hero-overlay">
+            <h1 class="hero-titulo">Nossas Macadâmias</h1>
+            <p class="hero-subtitulo">Qualidade e sabor incomparáveis</p>
+        </div>
+    </div>
+
     <section id="sobre-produtos" class="coluna-texto">
-        <h1>Produtos</h1>
-        
-        <p> Explore nossa seleção de macadâmias cuidadosamente processadas para garantir qualidade, frescor e sabor incomparáveis.
-        </p>
+        <p class="descricao-secao">Explore nossa seleção de macadâmias cuidadosamente processadas para garantir qualidade, frescor e sabor incomparáveis.</p>
+
+        <div class="filtros">
+            <button class="filtro-btn active" data-filtro="todas">Todas</button>
+            <button class="filtro-btn" data-filtro="inteiras">Inteiras</button>
+            <button class="filtro-btn" data-filtro="pedacos">Pedaços</button>
+        </div>
 
         <div class="produtos">
-            <div class="produto-card" data-produto="produto1">
+            <div class="produto-card" data-produto="produto1" data-categoria="inteiras">
                 <img src="img/macadamias-otimizadas/estilo1.webp" alt="Nozes de Macadâmia inteiras" class="produto-logo">
-                <h3>Estilo 1</h3>
-                <p class="tipo">Macadâmias inteiras</p> 
-                
+                <div class="produto-card__body">
+                    <h3>Estilo 1</h3>
+                    <p class="tipo">Macadâmias inteiras</p>
+                    <p class="produto-card__desc">Amêndoas inteiras e selecionadas de tamanho premium</p>
+                    <div class="produto-card__tags">
+                        <span>100g</span>
+                        <span>500g</span>
+                        <span>1.1kg</span>
+                        <span>2.5kg</span>
+                    </div>
+                </div>
             </div>
     
-            <div class="produto-card" data-produto="produto2"> 
+            <div class="produto-card" data-produto="produto2" data-categoria="inteiras pedacos">
                 <img src="img/macadamias-otimizadas/estilo2.webp" alt="Nozes de Macadâmia cortadas ao meio" class="produto-logo">
-                <h3>Estilo 2</h3>
-                <p class="tipo">Macadâmias inteiras e metades</p>
-                
+                <div class="produto-card__body">
+                    <h3>Estilo 2</h3>
+                    <p class="tipo">Inteiras e metades</p>
+                    <p class="produto-card__desc">Inteiras e metades de amêndoas para aperitivos e doces</p>
+                    <div class="produto-card__tags">
+                        <span>100g</span>
+                        <span>500g</span>
+                        <span>1.1kg</span>
+                        <span>2.5kg</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="produto-card" data-produto="produto4">
+            <div class="produto-card" data-produto="produto4" data-categoria="pedacos">
                 <img src="img/macadamias-otimizadas/estilo4.webp" alt="Nozes de Macadâmia em pedaços grandes" class="produto-logo">
-                <h3>Estilo 4</h3>
-                <p class="tipo">Macadâmias de tamanho pequeno</p> 
+                <div class="produto-card__body">
+                    <h3>Estilo 4</h3>
+                    <p class="tipo">Pedaços médios</p>
+                    <p class="produto-card__desc">Pedaços médios, excelentes para aperitivos e confeitaria</p>
+                    <div class="produto-card__tags">
+                        <span>500g</span>
+                        <span>1.1kg</span>
+                        <span>2.5kg</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="produto-card" data-produto="produto5">
-                <img src="img/macadamias-otimizadas/estilo5.webp" alt="Nozes de Macadâmia quebradas" class="produto-logo" >
-                <h3>Estilo 5</h3>
-                <p class="tipo">Cacos e lascas de macadâmia</p> 
+            <div class="produto-card" data-produto="produto5" data-categoria="pedacos">
+                <img src="img/macadamias-otimizadas/estilo5.webp" alt="Nozes de Macadâmia quebradas" class="produto-logo">
+                <div class="produto-card__body">
+                    <h3>Estilo 5</h3>
+                    <p class="tipo">Cacos e lascas</p>
+                    <p class="produto-card__desc">Cacos e lascas de macadâmia para confeitaria e sorvetes</p>
+                    <div class="produto-card__tags">
+                        <span>2.5kg</span>
+                    </div>
+                </div>
             </div>
-
-           
         </div>
+
         <div class="linha-disclaimer">
             <p>Disponíveis nas versões In Natura, Torrada com Sal ou Sem Sal • Todos os produtos são embalados a vácuo para garantir maior durabilidade • Sujeito à disponibilidade</p>
         </div>
